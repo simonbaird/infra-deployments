@@ -1,6 +1,7 @@
 resources:
 - openshift-pipelines/
 - build-templates/ 
+- tekton-chains/
 
 generatorOptions:
  disableNameSuffixHash: true

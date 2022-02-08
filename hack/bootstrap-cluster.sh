@@ -52,6 +52,11 @@ kubectl apply -f $ROOT/argo-cd-apps/app-of-apps/all-applications-staging.yaml
 ARGO_CD_URL="https://$(kubectl get route/openshift-gitops-server -n openshift-gitops -o template --template={{.spec.host}})"
 
 echo
+echo "Configuring service account for Tekton Chains:"
+oc new-project tekton-chains
+oc adm policy add-scc-to-user anyuid -z tekton-chains-controller
+
+echo
 echo "========================================================================="
 echo
 echo "Argo CD URL is: $ARGO_CD_URL"
@@ -67,3 +72,5 @@ echo "OK"
 echo
 echo "Login/password uses your OpenShift credentials ('Login with OpenShift' button)"
 echo
+
+oc project default
