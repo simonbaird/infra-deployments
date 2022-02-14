@@ -95,11 +95,6 @@ ARGO_CD_ROUTE=$(kubectl get \
 ARGO_CD_URL="https://$ARGO_CD_ROUTE"
 
 echo
-echo "Configuring service account for Tekton Chains:"
-oc new-project tekton-chains
-oc adm policy add-scc-to-user anyuid -z tekton-chains-controller
-
-echo
 echo "========================================================================="
 echo
 echo "Argo CD URL is: $ARGO_CD_URL"
