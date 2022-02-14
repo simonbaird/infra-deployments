@@ -6,6 +6,8 @@ resources:
 patchesStrategicMerge:
 # Add some chains configuration
 - chains-config.yaml
+# Remove runAsUser and runAsGroup from security context
+- security-context-fix.yaml
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
