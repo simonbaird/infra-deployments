@@ -13,8 +13,8 @@ data:
   #
   # Later we'll probably want to use oci storage, but tekton should
   # be easier to get working to begin with, so let's start there
-  artifacts.taskrun.storage: "tekton"
-  artifacts.oci.storage: "tekton"
+  artifacts.taskrun.storage: ""
+  artifacts.oci.storage: ""
   #
   # Transparency disabled by default to begin with
   transparency.enabled: "false"
