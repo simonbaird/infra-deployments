@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chains-config
+  namespace: tekton-chains
+data:
+  #
+  # See https://tekton.dev/docs/chains/config/
+  #
+  # Later we might want to change this to 'in-toto', but start with
+  # the simplest option to get everything working
+  artifacts.taskrun.format: "tekton"
+  #
+  # Later we'll probably want to use oci storage, but tekton should
+  # be easier to get working to begin with, so let's start there
+  artifacts.taskrun.storage: "tekton"
+  artifacts.oci.storage: "tekton"
+  #
+  # Transparency disabled by default to begin with
+  transparency.enabled: "false"
+  transparency.url: "https://rekor.sigstore.dev"
