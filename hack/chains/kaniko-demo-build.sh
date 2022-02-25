@@ -6,6 +6,8 @@ set -ue
 
 echo "To watch the chains controller logs:"
 echo "  kubectl logs -f -l app=tekton-chains-controller -n tekton-chains"
+echo "or:"
+echo "  hack/chains/nice-logs.sh"
 pause
 
 title "Set project"
