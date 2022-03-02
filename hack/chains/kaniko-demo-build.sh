@@ -5,9 +5,7 @@ source $SCRIPTDIR/_helpers.sh
 set -ue
 
 echo "To watch the chains controller logs:"
-echo "  kubectl logs -f -l app=tekton-chains-controller -n tekton-chains"
-echo "or:"
-echo "  hack/chains/nice-logs.sh"
+echo "  kubectl logs -f -l app=tekton-chains-controller -n tekton-chains | sed G"
 pause
 
 title "Set project"

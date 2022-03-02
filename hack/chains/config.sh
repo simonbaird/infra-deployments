@@ -55,6 +55,17 @@ case "$1" in
 
     ;;
 
+  quay )
+    # Currently quay.io doesn't support oci storage for attestations
+    $0 '{
+      "artifacts.taskrun.format": "in-toto",
+      "artifacts.taskrun.storage": "tekton",
+      "artifacts.oci.storage": "oci",
+      "transparency.enabled": "true"
+      }' $2
+
+    ;;
+
   rekor-on )
     # (Needs to be a string not a boolean FYI)
     $0 'transparency.enabled: "true"' $2
