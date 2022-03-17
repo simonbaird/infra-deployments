@@ -35,14 +35,24 @@ title "Take a look at it"
 curl-json $TRANSPARENCY_URL | yq-pretty
 pause
 
+# We could use rekor-cli here and it should be the same, e.g:
+# `rekor-cli get --log-index $LOG_INDEX --format json | jq ...`
+#
+BODY_DATA=$( curl-json $TRANSPARENCY_URL | jq -r 'values[0].body' )
+ATTESTATION_DATA=$( curl-json $TRANSPARENCY_URL | jq -r 'values[0].attestation' )
+
 title "Extract the rekor body"
-curl-json $TRANSPARENCY_URL | jq -r 'values[].body' | base64 -d | yq-pretty
+echo "$BODY_DATA" | base64 -d | yq-pretty
 pause
 
-# Comment this out because there is no attestation data in the kaniko build task
-#title "Extract the rekor attestation"
-#curl -s -H "Accept: application/json" $TRANSPARENCY_URL | jq -r 'values[].attestation.data' | base64 -d | base64 -d | yq e . -PC -
-#pause
+if [[ $ATTESTATION_DATA = '{}' ]]; then
+  title "No attestation found"
+else
+  title "Extract the rekor attestation"
+  # It really is base64 encoded twice here
+  echo $ATTESTATION_DATA | jq -r .data | base64 -d | base64 -d | yq-pretty
+  pause
+fi
 
 title "Using the rekor-cli"
 show-then-run "rekor-cli get --log-index $LOG_INDEX --rekor_server $REKOR_SERVER"
