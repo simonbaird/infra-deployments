@@ -4,34 +4,22 @@
 #
 # Todo:
 # - How to return a message?
-# - How to not need to list each check in the allow block
-# - How to do a "fail when" instead of "pass when" style
+# - Fetch real attestation data
+# - Fetch transparency log data
+# - What about tekton results data?
 
 package contract.pipelinerun.releaseable
+
+import data.contract.pipelinerun.k8s_sanity
 
 import future.keywords.every
 
 default allow = false
 
 allow = true {
-  pipelinerun_sanity_check
-  taskrun_sanity_check
+  k8s_sanity.ok
   transparency_enabled
   #taskruns_marked_as_signed
-}
-
-# All the prs have the expected kind
-pipelinerun_sanity_check {
-  every pr in data.k8s.PipelineRun {
-    pr.kind == "PipelineRun"
-  }
-}
-
-# All the trs have the expected kind
-taskrun_sanity_check {
-  every tr in data.k8s.TaskRun{
-    tr.kind == "TaskRun"
-  }
 }
 
 # Transparency logs are enabled
