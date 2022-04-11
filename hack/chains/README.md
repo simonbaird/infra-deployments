@@ -33,6 +33,12 @@ the 'build' application.
 (The DEPLOY_ONLY var takes a comma separated list, so you can add other
 applications if required.)
 
+To workaround a Gitops problem causing the pcv-cleaner to never complete
+syncing when installing just the build application, create this project in
+advance:
+
+    oc new-project application-service
+
 Then (assuming you're working in a branch in your own fork
 of this repo):
 
@@ -40,7 +46,7 @@ of this repo):
 
 A "go make some coffee" one liner for CRC:
 
-    cd $(git rev-parse --show-toplevel); crc delete; crc start; `crc console --credentials | tail -1 | cut -d\' -f2`; DEPLOY_ONLY=build hack/bootstrap-cluster.sh preview
+    cd $(git rev-parse --show-toplevel); crc delete; crc start; `crc console --credentials | tail -1 | cut -d\' -f2`; oc new-project application-service; DEPLOY_ONLY=build hack/bootstrap-cluster.sh preview
 
 Wait until you see healthy/synced at [Argo CD](https://openshift-gitops-server-openshift-gitops.apps-crc.testing/applications).
 
