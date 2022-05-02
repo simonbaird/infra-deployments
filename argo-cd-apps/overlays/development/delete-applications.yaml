@@ -4,3 +4,39 @@ kind: Application
 metadata:
   name: authentication
 $patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: has
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: release
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: spi
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: e2e-tests
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-registration
+$patch: delete
