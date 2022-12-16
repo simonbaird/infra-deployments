@@ -27,3 +27,81 @@ kind: Application
 metadata:
   name: tekton-ci
 $patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: application-api
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: build-templates
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-registration
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitops
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: has
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: integration
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: internal-services
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jvm-build-service
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rekor
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: release
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: shared-resources
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: spi
+$patch: delete
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: spi-vault
+$patch: delete
